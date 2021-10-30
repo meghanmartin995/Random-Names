@@ -1,0 +1,14 @@
+<script>
+
+async function fetchNames() {
+  const res = await fetch('https://randomuser.me/api/')
+  const json = await res.json();
+  const firstName = json.results[0].name.first
+  const lastName = json.results[0].name.last
+  const fullName = firstName.concat(' ', lastName);
+  window.parent.postMessage({ pluginMessage: fullName }, "*");
+};
+
+fetchNames()
+
+</script>
